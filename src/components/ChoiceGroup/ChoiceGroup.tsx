@@ -3,8 +3,8 @@ import { ChoiceGroup, IChoiceGroupOption, DefaultButton } from '@fluentui/react'
 import './ChoiceGroup.css';
 
 const MyChoiceGroup: React.FC = () => {
-  const [selectedOption1, setSelectedOption1] = useState<string | undefined>('yes1');
-  const [selectedOption2, setSelectedOption2] = useState<string | undefined>('yes2');
+  const [selectedOption1, setSelectedOption1] = useState<string | undefined>('');
+  const [selectedOption2, setSelectedOption2] = useState<string | undefined>('');
   const [showWarning, setShowWarning] = useState(false);
   const [showOption2, setShowOption2] = useState(false);
 
