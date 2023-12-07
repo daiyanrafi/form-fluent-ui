@@ -1,35 +1,43 @@
 .choice-container {
     display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: flex-start; /* Align items to the left */
-    justify-content: space-between; /* Add space between the items */
-    width: 500px; /* Adjust the width as needed */
-    padding: 20px; /* Add padding for better appearance */
-    height: 100%; /* Make the container take the full height */
-  }
-  
-  .title {
+    flex-direction: column;
+    /* Stack items vertically */
+    align-items: flex-start;
+    /* Align items to the left */
+    justify-content: space-between;
+    /* Add space between the items */
+    width: 500px;
+    /* Adjust the width as needed */
+    padding: 20px;
+    /* Add padding for better appearance */
+    height: 100%;
+    /* Make the container take the full height */
+}
+
+.title {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
     color: black;
-  }
-  
-  .choice-group {
-    margin-bottom: 10px; /* Add margin-bottom to create space between ChoiceGroups */
-  }
-  
-  .add-button {
-    align-self: flex-end; /* Align the button to the right */
-  }
+}
 
-  .warning {
+.choice-group {
+    margin-bottom: 10px;
+    /* Add margin-bottom to create space between ChoiceGroups */
+}
+
+.add-button {
+    align-self: flex-end;
+    /* Align the button to the right */
+}
+
+.warning {
     color: red;
     margin-top: 10px;
-  }
-  
-  @media only screen and (max-width: 600px) {
+}
+
+@media only screen and (max-width: 600px) {
     .choice-container {
-      padding: 10px;
+        padding: 10px;
     }
-  }
+}
