@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { ChoiceGroup, IChoiceGroupOption, DefaultButton } from '@fluentui/react';
-import './ChoiceGroup.css';
+import { useNavigate } from 'react-router-dom';
+import './ChoiceGroupPage.css';
 
 const MyChoiceGroup: React.FC = () => {
     const [selectedOption1, setSelectedOption1] = useState<string | undefined>('');
     const [selectedOption2, setSelectedOption2] = useState<string | undefined>('');
     const [showWarning, setShowWarning] = useState(false);
     const [showOption2, setShowOption2] = useState(false);
+    const navigate = useNavigate();
 
     const options1: IChoiceGroupOption[] = [
         { key: 'yes1', text: 'Yes', name: 'group1' },
@@ -21,12 +23,11 @@ const MyChoiceGroup: React.FC = () => {
     const onChange1 = (_ev?: React.FormEvent<HTMLElement | HTMLInputElement>, option?: IChoiceGroupOption): void => {
         if (option) {
             setSelectedOption1(option.key);
-            // Reset the state for the second choice group and warning
+
             setShowWarning(false);
             setSelectedOption2(undefined);
             setShowOption2(false);
 
-            // Handle logic based on the selected option in the first group
             if (option.key === 'yes1') {
                 setShowWarning(true);
             } else {
@@ -38,18 +39,17 @@ const MyChoiceGroup: React.FC = () => {
     const onChange2 = (_ev?: React.FormEvent<HTMLElement | HTMLInputElement>, option?: IChoiceGroupOption): void => {
         if (option) {
             setSelectedOption2(option.key);
-            // Reset the state for the warning
+
             setShowWarning(false);
 
-            // Handle logic based on the selected option in the second group
             if (option.key === 'yes2') {
-                // You can perform additional logic here if needed
             }
         }
     };
 
     const handleAddButtonClick = (): void => {
         console.log('Add button clicked');
+        navigate('/yourDetails');
     };
 
     return (
