@@ -1,11 +1,14 @@
 // components/YourDetailsPage.tsx
 
-import React, { useState } from 'react';
-import { TextField, Text, Stack, IDropdownOption, ComboBox, ChoiceGroup, IChoiceGroup, IChoiceGroupOption } from '@fluentui/react';
+import React, { useEffect, useState } from 'react';
+import { TextField, Text, Stack, IDropdownOption, ComboBox, ChoiceGroup, IChoiceGroup, IChoiceGroupOption, PrimaryButton } from '@fluentui/react';
+// import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './YourDetailsPage.css'; // Import your CSS file
 
 const YourDetailsPage: React.FC = () => {
-
+  // const history = useHistory();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: '',
     firstName: '',
@@ -17,14 +20,28 @@ const YourDetailsPage: React.FC = () => {
     state: '',
     country: '',
     preferredContactNumber: '',
+    email: '',
     phone: '',
     mobile: '',
-  })
+  });
+
+  const [emailError, setEmailError] = useState<string | undefined>(undefined);
+
+  const [error, setError] = React.useState<string | null>(null);
 
   const titleOptions: IDropdownOption[] = [
     { key: 'mrs', text: 'Mrs.' },
     { key: 'mr', text: 'Mr.' },
   ]
+
+  const validateNumberInput = (value: string): string | undefined => {
+    const onlyNumbers = /^\d*$/;
+    if (!onlyNumbers.test(value)) {
+      return 'Please enter only numbers.';
+    }
+    return undefined;
+  };
+
 
   // drop-down function for title
   const handleDropdownChange = (option: IDropdownOption | undefined): void => {
@@ -46,13 +63,56 @@ const YourDetailsPage: React.FC = () => {
 
   const handlePreferredContactNumberChange = (_ev?: React.FormEvent<HTMLElement | HTMLInputElement>, option?: IChoiceGroupOption): void => {
     if (option) {
-      // setFormData((prevData) => ({ ...prevData, preferredContactNumber: option.key }));
       setFormData((prevData) => {
         console.log('Choose Number:', { ...prevData, preferredContactNumber: option.key });
-        return { ...prevData, preferredContactNumber: option.key };
+        return { ...prevData, preferredContactNumber: option.key || '' };
       })
     }
   };
+
+  const handleEmailChange = (value: string): void => {
+    // Validate email
+    if (!value.includes('@')) {
+      setEmailError('Please enter a valid email address.');
+    } else {
+      setEmailError(undefined);
+      // Save data when email is valid
+      setFormData((prevData) => {
+        console.log('Saving email:', value);
+        console.log('Current formDataEmail:', { ...prevData, email: value });
+        return { ...prevData, email: value };
+      });
+    }
+  };
+
+  // || !formData.title || !formData.address || !formData.postalAddress || !formData.suburb || !formData.postalCode || !formData.state || !formData.country || !formData.preferredContactNumber || !formData.phone || !formData.mobile
+  
+  const handleNextClick = () => {
+
+    if (!formData.firstName || !formData.lastName || !formData.email ) {
+
+      const errorMessage = 'Please fill in all required fields.';
+      console.error(errorMessage);
+      setError(errorMessage);
+      return;
+    }
+    // Clear existing error message
+    setError(null);
+
+    localStorage.setItem('formData', JSON.stringify(formData));
+
+    navigate('/your-representative', { state: { yourValues: formData } })
+  };
+
+
+  // useEffect(() => {
+  //   // Retrieve form data from localStorage
+  //   const storedFormData = localStorage.getItem('formData');
+  //   if (storedFormData) {
+  //     const parsedFormData = JSON.parse(storedFormData);
+  //     setFormData(parsedFormData);
+  //   }
+  // }, []);
 
   return (
     <div className="your-details-container">
@@ -102,7 +162,12 @@ const YourDetailsPage: React.FC = () => {
           />
           <TextField
             label="Postal Code"
-            onChange={(e, value) => handleTextFieldChange('postalCode', value || '')}
+            // onChange={(e, value) => handleTextFieldChange('postalCode', value || '')}
+            onKeyPress={(event) => {
+              if (!/[0-9]/.test(event.key)) {
+                  event.preventDefault();
+              }
+          }}
           />
         </Stack>
 
@@ -117,8 +182,6 @@ const YourDetailsPage: React.FC = () => {
             onChange={(e, value) => handleTextFieldChange('country', value || '')}
           />
         </Stack>
-
-
 
         {/* Preferred Contact Number, Phone, and Mobile */}
         <Stack tokens={{ childrenGap: 15 }}>
@@ -152,6 +215,25 @@ const YourDetailsPage: React.FC = () => {
             />
           </Stack>
         </Stack>
+
+        {/* Email */}
+        <TextField
+          label="Email"
+          onChange={(e, value) => handleEmailChange(value || '')}
+          errorMessage={emailError}
+        />
+
+        {/* Error message for required fields */}
+        {error && (
+          <Text variant="small" style={{ color: 'red', marginBottom: '10px' }}>
+            {error}
+          </Text>
+        )}
+
+        {/* Next Button */}
+        <PrimaryButton className="add-button" onClick={handleNextClick}>
+          Next
+        </PrimaryButton>
 
       </Stack>
     </div>

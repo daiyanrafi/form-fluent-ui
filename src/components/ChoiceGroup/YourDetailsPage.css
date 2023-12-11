@@ -1,10 +1,10 @@
 .your-details-container {
-  max-width: 600px; /* Adjust the max-width as needed */
-  margin: 0 auto; /* Center the container horizontally */
+  max-width: 600px;
+  margin: 0 auto;
   padding: 20px;
-  border: 1px solid #f5f2f2; /* Add a border for the big box appearance */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
-  border-radius: 8px; /* Optional: Add rounded corners */
+  border: 1px solid #f5f2f2;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
   box-sizing: border-box;
 }
 
@@ -20,42 +20,20 @@
   margin-bottom: 20px;
 }
 
-/* Optional: Style individual text fields */
-.your-details-container .ms-TextField {
-  width: 100%; /* Make text fields take full width */
-  margin-bottom: 15px;
+.ms-TextField,
+.ms-ChoiceField,
+.ms-TextField.phone,
+.ms-TextField.mobile {
+  width: 100%;
+  margin-bottom: 10px; /* Adjust margin between input boxes */
 }
 
-/* Optional: Style individual text fields */
-.your-details-container .ms-TextField:last-child {
-  margin-bottom: 0; /* Remove bottom margin for the last text field */
+.ms-TextField.suburb,
+.ms-TextField.postalCode {
+  width: 48%;
 }
 
-.your-details-container .ms-ChoiceField {
-  width: 100%; /* Adjust the width as needed for the ChoiceGroup */
-  margin-bottom: 15px;
-}
-
-.your-details-container .ms-ChoiceFieldGroup-title {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.your-details-container .ms-TextField.phone,
-.your-details-container .ms-TextField.mobile {
-  width: 40%; /* Adjust the width as needed for the text fields */
-  margin-bottom: 15px;
-}
-
-/* Optional: Add more specific styles for the Phone and Mobile text fields if needed */
-.your-details-container .ms-TextField.phone {
-  /* Additional styles for the Phone field */
-}
-
-.your-details-container .ms-TextField.mobile {
-  /* Additional styles for the Mobile field */
-}
-.your-details-container .ms-TextField.choiceGroup {
-  /* Additional styles for the Mobile field */
+.add-button {
+  align-self: flex-end;
+  color: blue;
 }
