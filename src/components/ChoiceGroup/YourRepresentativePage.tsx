@@ -48,7 +48,7 @@ const AuthorizationForm: React.FC = () => {
         sessionStorage.setItem('authorizationFormData', JSON.stringify(data));
         console.log('Form data saved to local storage.');
         // window.location.href = '/next-page';
-        navigate('/Incident', { state: { formData: data } });
+        navigate('/incident', { state: { formData: data } });
     };
 
     const goToPreviousPage = () => {
@@ -73,20 +73,20 @@ const AuthorizationForm: React.FC = () => {
     return (
         <div className="p-8 max-w-lg  mx-auto bg-white shadow-md rounded-md">
             <h1 className="text-3xl font-bold mb-4">Your Representative</h1>
-            <p className="mb-6 text-gray-600 text-left">
+            <p className="mb-6 text-gray-600 text-left font-semibold">
                 If you are submitting this complaint on behalf of another person/supplier/organisation,
                 please complete the Authority to Act form and have it ready to attach.
             </p>
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
                 <div className="flex items-center gap-2">
-                    <label htmlFor="title">Title</label>
+                    <label htmlFor="title" className="text-sm font-semibold mb-2">Title</label>
                     <select
                         {...register('title', { required: 'Title is required' })}
                         id="title"
                         name="title"
                         className="select select-primary w-full"
                     >
-                        <option value="">Select title</option>
+                        <option value="" className="text-sm font-semibold mb-2">Select title</option>
                         <option value="Mr">Mr.</option>
                         <option value="Mrs">Mrs.</option>
                         <option value="Ms">Ms.</option>
@@ -97,7 +97,7 @@ const AuthorizationForm: React.FC = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                     <div className="flex flex-col">
-                        <label htmlFor="firstName">First Name</label>
+                        <label htmlFor="firstName" className="text-sm font-semibold mb-2">First Name</label>
                         <input
                             {...register('firstName', { required: 'First name is required' })}
                             type="text"
@@ -110,7 +110,7 @@ const AuthorizationForm: React.FC = () => {
                         )}
                     </div>
                     <div className="flex flex-col">
-                        <label htmlFor="lastName">Last Name</label>
+                        <label htmlFor="lastName" className="text-sm font-semibold mb-2">Last Name</label>
                         <input
                             {...register('lastName', { required: 'Last name is required' })}
                             type="text"
@@ -124,7 +124,7 @@ const AuthorizationForm: React.FC = () => {
                     </div>
                 </div>
                 <div className="flex flex-col">
-                    <label htmlFor="address">Postal Address</label>
+                    <label htmlFor="address" className="text-sm font-semibold mb-2">Postal Address</label>
                     <input
                         {...register('address', { required: 'Postal address is required' })}
                         type="text"
@@ -138,7 +138,7 @@ const AuthorizationForm: React.FC = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                     <div className="flex flex-col">
-                        <label htmlFor="suburb">Suburb</label>
+                        <label htmlFor="suburb" className="text-sm font-semibold mb-2">Suburb</label>
                         <input
                             {...register('suburb', { required: 'Suburb is required' })}
                             type="text"
@@ -151,7 +151,7 @@ const AuthorizationForm: React.FC = () => {
                         )}
                     </div>
                     <div className="flex flex-col">
-                        <label htmlFor="postcode">Postcode</label>
+                        <label htmlFor="postcode" className="text-sm font-semibold mb-2">Postcode</label>
                         <input
                             {...register('postcode', { required: 'Postcode is required' })}
                             type="text"
@@ -193,7 +193,7 @@ const AuthorizationForm: React.FC = () => {
                     </div>
                 </div>
                 <div className="flex flex-col">
-                    <label htmlFor="landline">Landline Number</label>
+                    <label htmlFor="landline" className="text-sm font-semibold mb-2">Landline Number</label>
                     <input
                         {...register('landline')}
                         type="tel"
@@ -203,7 +203,7 @@ const AuthorizationForm: React.FC = () => {
                     />
                 </div>
                 <div className="flex flex-col">
-                    <label htmlFor="mobile">Mobile Number</label>
+                    <label htmlFor="mobile" className="text-sm font-semibold mb-2">Mobile Number</label>
                     <input
                         {...register('mobile', { required: 'Mobile number is required' })}
                         type="tel"
@@ -216,7 +216,7 @@ const AuthorizationForm: React.FC = () => {
                     )}
                 </div>
                 <div className="flex flex-col">
-                    <label htmlFor="email">Email Address</label>
+                    <label htmlFor="email" className="text-sm font-semibold mb-2">Email Address</label>
                     <input
                         {...register('email', { required: 'Email address is required' })}
                         type="email"
@@ -228,21 +228,21 @@ const AuthorizationForm: React.FC = () => {
                         <span className="text-red-500">{errors.email.message}</span>
                     )}
                 </div>
-                <p className="mb-4">
-                    if you are acting on behalf of another person, you are required to provide a signed authority to act form. Alternatively, you can also post the Autherity to Act form to us on GPO Box 2947. Adelaide SA 5001.
+                <p className="mb-4 text-sm font-semibold" >
+                    If you are acting on behalf of another person, you are required to provide a signed authority to act form. Alternatively, you can also post the Autherity to Act form to us on GPO Box 2947. Adelaide SA 5001.
                 </p>
 
                 <div className="flex justify-between">
                     <button
                         type="button"
-                        className="px-4 py-2 text-white bg-gray-500 rounded-md hover:bg-gray-600 focus:outline-none transition duration-300"
+                        className="px-4 py-2 font-semibold text-white bg-gray-500 rounded-md hover:bg-gray-600 focus:outline-none transition duration-300"
                         onClick={goToPreviousPage}
                     >
                         Previous
                     </button>
                     <button
                         type="submit"
-                        className="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none transition duration-300"
+                        className="px-4 py-2 font-semibold text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none transition duration-300"
                         onClick={handleSubmit(onSubmit)}
                     >
                         Next
