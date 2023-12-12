@@ -34,13 +34,13 @@ const YourDetailsPage: React.FC = () => {
     { key: 'mr', text: 'Mr.' },
   ]
 
-  const validateNumberInput = (value: string): string | undefined => {
-    const onlyNumbers = /^\d*$/;
-    if (!onlyNumbers.test(value)) {
-      return 'Please enter only numbers.';
-    }
-    return undefined;
-  };
+  // const validateNumberInput = (value: string): string | undefined => {
+  //   const onlyNumbers = /^\d*$/;
+  //   if (!onlyNumbers.test(value)) {
+  //     return 'Please enter only numbers.';
+  //   }
+  //   return undefined;
+  // };
 
 
   // drop-down function for title
@@ -99,20 +99,20 @@ const YourDetailsPage: React.FC = () => {
     // Clear existing error message
     setError(null);
 
-    localStorage.setItem('formData', JSON.stringify(formData));
+    sessionStorage.setItem('formData', JSON.stringify(formData));
 
     navigate('/your-representative', { state: { yourValues: formData } })
   };
 
 
-  // useEffect(() => {
-  //   // Retrieve form data from localStorage
-  //   const storedFormData = localStorage.getItem('formData');
-  //   if (storedFormData) {
-  //     const parsedFormData = JSON.parse(storedFormData);
-  //     setFormData(parsedFormData);
-  //   }
-  // }, []);
+  useEffect(() => {
+    // Retrieve form data from localStorage
+    const storedFormData = sessionStorage.getItem('formData');
+    if (storedFormData) {
+      const parsedFormData = JSON.parse(storedFormData);
+      setFormData(parsedFormData);
+    }
+  }, []);
 
   return (
     <div className="your-details-container">
