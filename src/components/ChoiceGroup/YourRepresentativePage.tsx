@@ -71,7 +71,8 @@ const AuthorizationForm: React.FC = () => {
     }, [setValue]); // Include setValue as a dependency
 
     return (
-        <div className="p-8 max-w-lg  mx-auto bg-white shadow-md rounded-md">
+        // <div className="p-8 max-w-lg mx-auto bg-white shadow-md rounded-md">
+        <div className="p-8 max-w-lg mx-auto bg-amber-200 shadow-md rounded-lg h-[620px] overflow-auto">
             <h1 className="text-3xl font-bold mb-4">Your Representative</h1>
             <p className="mb-6 text-gray-600 text-left font-semibold">
                 If you are submitting this complaint on behalf of another person/supplier/organisation,

@@ -37,7 +37,7 @@ const IncidentPage: React.FC = () => {
     sessionStorage.setItem('incidentFormData', JSON.stringify(data));
     console.log('Form data saved to sessionStorage.');
 
-    // Continue with navigation
+    //navigation
     navigate('/complaint', { state: { formData: data } });
   };
 
@@ -48,7 +48,7 @@ const IncidentPage: React.FC = () => {
   console.log('Rendering IncidentPage component.');
 
   return (
-    <div className="p-8 max-w-lg mx-auto bg-white shadow-md rounded-md">
+    <div className="p-8 max-w-lg mx-auto bg-amber-200 shadow-md rounded-lg">
       <h1 className="text-3xl font-bold mb-4">Incident Address</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
         <div className="flex flex-col">

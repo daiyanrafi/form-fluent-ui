@@ -7,6 +7,8 @@ import './App.css';
 import IncidentAdd from './components/ChoiceGroup/IncidentAdd';
 import Complaint from './components/ChoiceGroup/Complaint';
 import ComplaintCont from './components/ChoiceGroup/ComplaintCont';
+import ComplaintContAgain from './components/ChoiceGroup/ComplaintContAgain';
+import FinalSub from './components/ChoiceGroup/FinalSub';
 
 const App: React.FC = () => {
   return (
@@ -18,6 +20,8 @@ const App: React.FC = () => {
         <Route path='/incident' element={<IncidentAdd/>}/>
         <Route path='/complaint' element={<Complaint/>}/>
         <Route path='/complaint-cont' element={<ComplaintCont/>}/>
+        <Route path='/cont-again' element={<ComplaintContAgain/>}/>
+        <Route path='/final-sub' element={<FinalSub/>}/>
         {/* Add other routes for different pages */}
       </Routes>
     </Router>

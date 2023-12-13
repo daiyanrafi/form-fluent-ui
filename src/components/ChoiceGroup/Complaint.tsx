@@ -46,7 +46,7 @@ const ComplaintPage: React.FC = () => {
   console.log('Rendering ComplaintPage component.');
 
   return (
-    <div className="p-8 max-w-lg mx-auto bg-white shadow-md rounded-md">
+    <div className="p-8 max-w-lg mx-auto bg-amber-200 shadow-md rounded-lg">
       <h1 className="text-3xl font-bold mb-10">Complaint</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
         <div className="grid grid-cols-2 gap-4">
