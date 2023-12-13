@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,7 +17,7 @@ const ComplaintContinuePage: React.FC = () => {
   const navigate = useNavigate();
 
   // Load form data from sessionStorage on component mount
-  React.useEffect(() => {
+  useEffect(() => {
     const storedFormData = sessionStorage.getItem('complaintContinueFormData');
     if (storedFormData) {
       const parsedData = JSON.parse(storedFormData);
