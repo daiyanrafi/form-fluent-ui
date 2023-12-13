@@ -35,7 +35,7 @@ const FinalSubmissionPage: React.FC = () => {
     };
 
     return (
-        <div className="p-8 max-w-screen-lg mx-auto bg-amber-200 shadow-md rounded-lg h-[620px]">
+        <div className="p-8 max-w-screen-lg mx-auto bg-amber-200 shadow-md rounded-lg">
             <h1 className="text-3xl font-bold mb-4 mt-2">Final Your Submission</h1>
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
                 <div className="flex flex-col">
